@@ -20,6 +20,7 @@ def sec3(job_id, reply_channel):
 
     job.status = "completed"
     job.save()
+
     # Send status update back to browser client
     if reply_channel is not None:
         Channel(reply_channel).send({

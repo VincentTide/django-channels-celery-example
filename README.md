@@ -21,9 +21,9 @@ The code block below shows how to send a reply back to the browser that originat
 Channel(reply_channel).send({
     "text": json.dumps ({
         "action": "completed",
-        "task_id": job.id,
-        "task_name": job.name,
-        "task_status": job.status,
+        "job_id": job.id,
+        "job_name": job.name,
+        "job_status": job.status,
     })
 })
 ```
