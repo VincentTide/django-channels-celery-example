@@ -1,0 +1,7 @@
+*.py[cod]
+*.~
+
+# PyCharm
+.idea
+
+db.sqlite3
