@@ -74,30 +74,30 @@
         if (data.action == "started") {
             var task_status = $("#task_status");
             var ele = $('<tr></tr>');
-            ele.attr("id", data.task_id);
-            var item_id = $("<td></td>").text(data.task_id);
+            ele.attr("id", data.job_id);
+            var item_id = $("<td></td>").text(data.job_id);
             ele.append(item_id);
-            var item_name = $("<td></td>").text(data.task_name);
+            var item_name = $("<td></td>").text(data.job_name);
             ele.append(item_name);
             var item_status = $("<td></td>");
-            item_status.attr("id", "item-status-"+data.task_id);
-            var span = $('<span class="label label-primary"></span>').text(data.task_status);
+            item_status.attr("id", "item-status-"+data.job_id);
+            var span = $('<span class="label label-primary"></span>').text(data.job_status);
             item_status.append(span);
             ele.append(item_status);
             task_status.append(ele);
         }
         // if action is completed, just update the status
         else if (data.action == "completed"){
-            var item = $('#item-status-' + data.task_id + ' span');
+            var item = $('#item-status-' + data.job_id + ' span');
             item.attr("class", "label label-success");
-            item.text(data.task_status);
+            item.text(data.job_status);
         }
     };
 
     $("#taskform").on("submit", function(event) {
         var message = {
             action: "start_sec3",
-            task_name: $('#task_name').val()
+            job_name: $('#task_name').val()
         };
         socket.send(JSON.stringify(message));
         $("#task_name").val('').focus();

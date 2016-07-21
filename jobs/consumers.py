@@ -35,10 +35,10 @@ def ws_receive(message):
 
 
 def start_sec3(data, reply_channel):
-    log.debug("Task Name=%s", data['task_name'])
+    log.debug("job Name=%s", data['job_name'])
     # Save model to our database
     job = Job(
-        name=data['task_name'],
+        name=data['job_name'],
         status="started",
     )
     job.save()
@@ -55,8 +55,8 @@ def start_sec3(data, reply_channel):
     Channel(reply_channel).send({
         "text": json.dumps({
             "action": "started",
-            "task_id": job.id,
-            "task_name": job.name,
-            "task_status": job.status,
+            "job_id": job.id,
+            "job_name": job.name,
+            "job_status": job.status,
         })
     })
