@@ -56,10 +56,12 @@
 
 
 
-
 <script>
-
-  $(function() {
+/*
+In a real project, this javascript should probably be placed in it's own file,
+but for the purposes of this demo, its kept in the same file for simplicity.
+*/
+$(function() {
     // When we're using HTTPS, use WSS too.
     var ws_scheme = window.location.protocol == "https:" ? "wss" : "ws";
     var ws_path = ws_scheme + '://' + window.location.host + '/dashboard/';
@@ -104,7 +106,6 @@
         return false;
     });
 });
-
 
 </script>
 
