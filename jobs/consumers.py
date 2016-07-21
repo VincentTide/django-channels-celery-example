@@ -27,27 +27,26 @@ def ws_receive(message):
 def start_sec3(data, reply_channel):
     log.debug("Task Name=%s", data['task_name'])
     # Save model to our database
-    task = Job(
+    job = Job(
         name=data['task_name'],
         status="started",
     )
-    task.save()
+    job.save()
 
     # Start long running task here (using Celery)
-    sec3_task = sec3.delay(task.id, reply_channel)
+    sec3_task = sec3.delay(job.id, reply_channel)
 
     # Store the celery task id into the database if we wanted to
     # do things like cancel the task in the future
-    task.celery_id = sec3_task.id
-    task.save()
+    job.celery_id = sec3_task.id
+    job.save()
 
     # Tell client task has been started
     Channel(reply_channel).send({
         "text": json.dumps({
-            # Tell client task is in progress
             "action": "started",
-            "task_id": task.id,
-            "task_name": task.name,
-            "task_status": task.status,
+            "task_id": job.id,
+            "task_name": job.name,
+            "task_status": job.status,
         })
     })
