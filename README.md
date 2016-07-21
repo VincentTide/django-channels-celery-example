@@ -16,7 +16,7 @@ celery worker -A example -l info  # Start celery workers
 ```
 
 ## How to Send Reply Back to Browser Client
-The code block below shows how to send a reply back to the browser that originated the task request. `reply_channel` contains a unique address in the form of `websocket.send!hjnsMbQPiefT`.
+The code block below shows how to send a reply back to the browser that originated the task request. `message.reply_channel.name` contains a unique address in the form of `websocket.send!hjnsMbQPiefT`.
 ```
 Channel(reply_channel).send({
     "text": json.dumps ({
