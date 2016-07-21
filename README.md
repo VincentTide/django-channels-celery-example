@@ -15,3 +15,14 @@ python manage.py runserver  # Start daphne and workers
 celery worker -A example -l info  # Start celery workers
 ```
 
+The code block below shows how to send a reply back to the browser that originally requested the task. `reply_channel` contains a unique address in the form `websocket.send!hjnsMbQPiefT`.
+```
+Channel(reply_channel).send({
+    "text": json.dumps ({
+        "action": "completed",
+        "task_id": job.id,
+        "task_name": job.name,
+        "task_status": job.status,
+    })
+})
+```

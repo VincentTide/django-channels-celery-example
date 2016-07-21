@@ -10,6 +10,16 @@ log = logging.getLogger(__name__)
 
 
 @channel_session
+def ws_connect(message):
+    message.reply_channel.send({
+        "text": json.dumps({
+            "action": "reply_channel",
+            "reply_channel": message.reply_channel.name,
+        })
+    })
+
+
+@channel_session
 def ws_receive(message):
     try:
         data = json.loads(message['text'])
