@@ -9,6 +9,7 @@ To run this project you will need to install Redis as the Channels layer backend
 Then just run:
 
 ```
+pip install -r requirements.txt
 python manage.py makemigrations
 python manage.py migrate
 python manage.py runserver  # Start daphne and workers
