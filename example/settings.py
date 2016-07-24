@@ -127,7 +127,7 @@ CHANNEL_LAYERS = {
 }
 
 # Celery settings
-BROKER_URL = 'amqp://guest:guest@localhost:5672//'  # our rabbitmq address
+BROKER_URL = 'redis://localhost:6379/0'  # our redis address
 # use json format for everything
 CELERY_ACCEPT_CONTENT = ['json']
 CELERY_TASK_SERIALIZER = 'json'

@@ -4,7 +4,7 @@ This project shows how to setup a Django Channels project with a Celery task que
 
 You can see an example deployment at <http://tasker.vincenttide.com>. Note that this deployment contains some extra stuff not covered in this repository.
 
-To run this project you will need to install Redis as the Channels layer backend and RabbitMQ as the Celery broker.
+To run this project you will need to install Redis. It is used both as the Channels layer backend and as the Celery broker.
 
 Then just run:
 
